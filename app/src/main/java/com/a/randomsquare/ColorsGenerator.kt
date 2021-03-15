@@ -1,18 +1,16 @@
 package com.a.randomsquare
 
-import android.content.Context
-import android.content.res.Resources
-import androidx.core.content.ContextCompat
+import android.graphics.Color
 
 class ColorsGenerator {
 
-    fun getColor(context: Context, code: Int):Int {
+    fun getColor(code: Int): Int {
         when (code) {
-            1 -> return ContextCompat.getColor(context, R.color.blue)
-            2 -> return ContextCompat.getColor(context, R.color.green)
-            3 -> return ContextCompat.getColor(context, R.color.yellow)
-            4 -> return ContextCompat.getColor(context, R.color.red)
-            5 -> return ContextCompat.getColor(context, R.color.purple_200)
+            1 -> return Color.rgb(0, 145, 234)
+            2 -> return Color.rgb(100, 221, 23)
+            3 -> return Color.rgb(255, 214, 0)
+            4 -> return Color.rgb(213, 0, 0)
+            5 -> return Color.rgb(98, 0, 238)
         }
         return 0
     }
