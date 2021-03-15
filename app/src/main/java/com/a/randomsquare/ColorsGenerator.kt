@@ -12,7 +12,7 @@ class ColorsGenerator {
             2 -> return ContextCompat.getColor(context, R.color.green)
             3 -> return ContextCompat.getColor(context, R.color.yellow)
             4 -> return ContextCompat.getColor(context, R.color.red)
-            5 -> return ContextCompat.getColor(context, R.color.black)
+            5 -> return ContextCompat.getColor(context, R.color.purple_200)
         }
         return 0
     }
