@@ -1,16 +1,21 @@
 package com.a.randomsquare
 
+import android.content.Context
 import android.graphics.Color
+import androidx.core.content.ContextCompat
+import javax.inject.Inject
 
-class ColorsGenerator {
+class ColorsGenerator @Inject constructor(context: Context) {
+
+    var mainFragmentContext: Context = context
 
     fun getColor(code: Int): Int {
         when (code) {
-            1 -> return Color.rgb(0, 145, 234)
-            2 -> return Color.rgb(100, 221, 23)
-            3 -> return Color.rgb(255, 214, 0)
-            4 -> return Color.rgb(213, 0, 0)
-            5 -> return Color.rgb(98, 0, 238)
+            1 -> return ContextCompat.getColor(mainFragmentContext, R.color.blue)
+            2 -> return ContextCompat.getColor(mainFragmentContext, R.color.green)
+            3 -> return ContextCompat.getColor(mainFragmentContext, R.color.yellow)
+            4 -> return ContextCompat.getColor(mainFragmentContext, R.color.red)
+            5 -> return ContextCompat.getColor(mainFragmentContext, R.color.purple_500)
         }
         return 0
     }

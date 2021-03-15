@@ -1,11 +1,13 @@
 package com.a.randomsquare
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.a.randomsquare.di.ContextModule
 import com.a.randomsquare.di.DaggerAppComponent
 import javax.inject.Inject
 
@@ -23,7 +25,10 @@ class MainFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_main, container, false)
         init(view)
-        DaggerAppComponent.create().inject(this)
+        DaggerAppComponent.builder()
+            .contextModule(ContextModule(requireContext()))
+            .build()
+            .inject(this)
         generateButton.setOnClickListener {
             square.setBackgroundColor(colorsGenerator.getColor((1..5).random()))
         }

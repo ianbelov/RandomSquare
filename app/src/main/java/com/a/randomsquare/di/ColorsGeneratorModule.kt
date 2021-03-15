@@ -1,5 +1,6 @@
 package com.a.randomsquare.di
 
+import android.content.Context
 import com.a.randomsquare.ColorsGenerator
 import dagger.Module
 import dagger.Provides
@@ -8,7 +9,7 @@ import dagger.Provides
 class ColorsGeneratorModule {
 
     @Provides
-    fun getColorsGeneratorModule(): ColorsGenerator {
-        return ColorsGenerator()
+    fun getColorsGeneratorModule(context: Context): ColorsGenerator {
+        return ColorsGenerator(context)
     }
 }
