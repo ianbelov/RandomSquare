@@ -33,7 +33,8 @@ class MainFragment : Fragment() {
         init(view)
         DaggerAppComponent.create().inject(this)
         generateButton.setOnClickListener {
-            val color = colorsGenerator.getColor(requireContext(), (1..5).random())
+            val color = colorsGenerator.getColor((1..5).random())
+
             square.setBackgroundColor(color)
         }
         return view
