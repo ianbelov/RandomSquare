@@ -6,13 +6,11 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class ContextModule(context: Context) {
-
-    private var mainFragmentContext: Context = context
+class ContextModule(private var context: Context) {
 
     @Singleton
     @Provides
     fun getContext(): Context {
-        return mainFragmentContext
+        return context
     }
 }
