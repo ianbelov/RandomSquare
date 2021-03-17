@@ -5,7 +5,7 @@ import android.graphics.Color
 import androidx.core.content.ContextCompat
 import javax.inject.Inject
 
-class ColorsGenerator @Inject constructor(private val context: Context) {
+class ColorsGenerator(private val context: Context) {
 
     private var currentColor: Int = ContextCompat.getColor(context, R.color.blue)
 

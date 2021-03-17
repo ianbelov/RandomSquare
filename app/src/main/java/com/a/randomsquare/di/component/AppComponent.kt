@@ -1,9 +1,7 @@
 package com.a.randomsquare.di.component
 
 import android.app.Application
-import android.content.Context
-import com.a.randomsquare.App
-import com.a.randomsquare.main.MainFragment
+import com.a.randomsquare.MyApp
 import com.a.randomsquare.di.module.AppModule
 import com.a.randomsquare.di.module.ColorsGeneratorModule
 import com.a.randomsquare.di.module.ContextModule
@@ -15,7 +13,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(modules = [ColorsGeneratorModule::class, AppModule::class, AndroidSupportInjectionModule::class, ContextModule::class])
-interface AppComponent : AndroidInjector<App> {
+interface AppComponent : AndroidInjector<MyApp> {
 
     @Component.Builder
     interface Builder {
@@ -24,5 +22,5 @@ interface AppComponent : AndroidInjector<App> {
         fun build(): AppComponent
     }
 
-    override fun inject(app: App)
+    override fun inject(myApp: MyApp)
 }
