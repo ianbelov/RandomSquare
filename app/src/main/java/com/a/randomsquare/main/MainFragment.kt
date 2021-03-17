@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import com.a.randomsquare.App
 import com.a.randomsquare.ColorsGenerator
 import com.a.randomsquare.R
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 
-class MainFragment : Fragment() {
+class MainFragment : DaggerFragment() {
 
     @Inject
     lateinit var colorsGenerator: ColorsGenerator
@@ -20,7 +21,6 @@ class MainFragment : Fragment() {
     lateinit var square: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        App.appComponent.inject(this)
         super.onCreate(savedInstanceState)
     }
 

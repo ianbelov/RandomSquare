@@ -1,21 +1,12 @@
 package com.a.randomsquare.di.module
 
-import android.content.Context
+import com.a.randomsquare.main.MainFragment
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
+import dagger.android.ContributesAndroidInjector
 
 @Module
-class AppModule(private var context: Context) {
+abstract class AppModule() {
 
-    @Singleton
-    @Provides
-    fun getContext(): Context {
-        return context
-    }
-
-//    @ContributesAndroidInjector
-//    fun getMainFragment(): MainFragment{
-//
-//    }
+    @ContributesAndroidInjector
+    abstract fun getMainFragment(): MainFragment
 }
