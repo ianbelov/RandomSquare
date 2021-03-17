@@ -1,15 +1,14 @@
-package com.a.randomsquare
+package com.a.randomsquare.main
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.a.randomsquare.di.ContextModule
-import com.a.randomsquare.di.DaggerAppComponent
+import com.a.randomsquare.App
+import com.a.randomsquare.ColorsGenerator
+import com.a.randomsquare.R
 import javax.inject.Inject
 
 

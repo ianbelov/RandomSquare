@@ -1,4 +1,4 @@
-package com.a.randomsquare.di
+package com.a.randomsquare.di.module
 
 import android.content.Context
 import com.a.randomsquare.ColorsGenerator
