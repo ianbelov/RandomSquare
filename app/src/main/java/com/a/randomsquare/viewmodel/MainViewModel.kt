@@ -1,17 +1,16 @@
 package com.a.randomsquare.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.ColorsGenerator
+import com.a.randomsquare.di.colorsgenerator.SecondColorsGeneratorImpl
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor(private var generator: ColorsGenerator): ViewModel() {
+class MainViewModel @Inject constructor(private var generatorRgbI: SecondColorsGeneratorImpl): ViewModel() {
 
     var colorCode : MutableLiveData<Int> = MutableLiveData()
 
     fun generateNewColor(code: Int){
-        colorCode.value = generator.getColor(code)
+        colorCode.value = generatorRgbI.getColor(code)
     }
 
 }
