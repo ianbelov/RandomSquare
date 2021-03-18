@@ -1,4 +1,4 @@
-package com.a.randomsquare.main
+package com.a.randomsquare.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.R
-import com.a.randomsquare.viewmodel.MainViewModel
+import com.a.randomsquare.viewmodel.FirstViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ import javax.inject.Inject
 class FirstFragment : Fragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    lateinit var viewModel: MainViewModel
+    lateinit var viewModel: FirstViewModel
     lateinit var generateButton: Button
     lateinit var square: View
 
@@ -31,7 +31,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_main, container, false)
+        val view = inflater.inflate(R.layout.fragment_first, container, false)
         init(view)
         generateButton.setOnClickListener {
             viewModel.generateNewColor(((1..5).random()))
@@ -40,9 +40,9 @@ class FirstFragment : Fragment() {
     }
 
     private fun init(view: View) {
-        generateButton = view.findViewById(R.id.generateButton)
-        square = view.findViewById(R.id.square)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        generateButton = view.findViewById(R.id.generateFirstButton)
+        square = view.findViewById(R.id.firstSquare)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(FirstViewModel::class.java)
         viewModel.colorCode.observe(viewLifecycleOwner, Observer {
                 square.setBackgroundColor(viewModel.colorCode.value!!)
         })

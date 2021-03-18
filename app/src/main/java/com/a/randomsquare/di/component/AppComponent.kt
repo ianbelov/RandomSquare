@@ -2,10 +2,8 @@ package com.a.randomsquare.di.component
 
 import android.app.Application
 import com.a.randomsquare.MyApp
-import com.a.randomsquare.di.module.FragmentModule
-import com.a.randomsquare.di.module.ColorsGeneratorModule
-import com.a.randomsquare.di.module.ContextModule
-import com.a.randomsquare.di.module.ViewModelModule
+import com.a.randomsquare.di.module.*
+import com.a.randomsquare.viewmodel.ViewModelFactory
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -14,8 +12,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [ColorsGeneratorModule::class, FragmentModule::class,
-        AndroidSupportInjectionModule::class, ContextModule::class, ViewModelModule::class]
+    modules = [FragmentsModule::class, AndroidSupportInjectionModule::class, ContextModule::class]
 )
 interface AppComponent : AndroidInjector<MyApp> {
 

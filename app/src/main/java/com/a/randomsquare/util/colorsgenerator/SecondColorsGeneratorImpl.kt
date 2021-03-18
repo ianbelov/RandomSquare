@@ -1,10 +1,12 @@
-package com.a.randomsquare.di.colorsgenerator
+package com.a.randomsquare.util.colorsgenerator
 
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.a.randomsquare.R
+import javax.inject.Inject
 
-class SecondColorsGeneratorImpl(private val context: Context): IColorsGenerator {
+class SecondColorsGeneratorImpl @Inject constructor(private val context: Context):
+    IColorsGenerator {
 
     override fun getColor(code: Int): Int {
         when (code) {

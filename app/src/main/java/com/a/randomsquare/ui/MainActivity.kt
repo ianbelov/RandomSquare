@@ -1,4 +1,4 @@
-package com.a.randomsquare.main
+package com.a.randomsquare.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

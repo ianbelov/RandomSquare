@@ -2,7 +2,6 @@ package com.a.randomsquare.viewmodel
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
-import java.lang.annotation.RetentionPolicy
 import kotlin.reflect.KClass
 
 @MapKey
