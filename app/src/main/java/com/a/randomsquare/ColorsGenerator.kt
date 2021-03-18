@@ -7,19 +7,15 @@ import javax.inject.Inject
 
 class ColorsGenerator(private val context: Context) {
 
-    private var currentColor: Int = ContextCompat.getColor(context, R.color.blue)
-
     fun getColor(code: Int): Int {
         when (code) {
-            1 -> currentColor = ContextCompat.getColor(context, R.color.blue)
-            2 -> currentColor = ContextCompat.getColor(context, R.color.green)
-            3 -> currentColor = ContextCompat.getColor(context, R.color.yellow)
-            4 -> currentColor = ContextCompat.getColor(context, R.color.red)
-            5 -> currentColor = ContextCompat.getColor(context, R.color.purple_500)
+            1 -> return ContextCompat.getColor(context, R.color.blue)
+            2 -> return ContextCompat.getColor(context, R.color.green)
+            3 -> return ContextCompat.getColor(context, R.color.yellow)
+            4 -> return ContextCompat.getColor(context, R.color.red)
+            5 -> return ContextCompat.getColor(context, R.color.purple_500)
         }
-        return currentColor
+        return ContextCompat.getColor(context, R.color.blue)
     }
-
-    fun getCurrentColor(): Int = currentColor
 
 }
