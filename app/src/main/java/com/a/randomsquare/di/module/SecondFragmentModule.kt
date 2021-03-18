@@ -28,6 +28,4 @@ abstract class SecondFragmentModule {
     @ViewModelKey(SecondViewModel::class)
     internal abstract fun secondViewModel(viewModel: SecondViewModel): ViewModel
 
-    @Binds
-    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 }

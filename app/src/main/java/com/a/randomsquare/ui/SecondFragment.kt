@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.R
@@ -20,6 +21,8 @@ class SecondFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var viewModel: SecondViewModel
     lateinit var generateButton: Button
+    lateinit var instanceButton: Button
+    lateinit var callButton: Button
     lateinit var square: View
 
     override fun onAttach(context: Context) {
@@ -36,15 +39,24 @@ class SecondFragment : Fragment() {
         generateButton.setOnClickListener {
             viewModel.generateNewColor(((1..5).random()))
         }
+        instanceButton.setOnClickListener {
+            Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
+        }
+        callButton.setOnClickListener {
+            viewModel.callObject()
+            Toast.makeText(context, "Provider called", Toast.LENGTH_SHORT).show()
+        }
         return view
     }
 
     private fun init(view: View) {
         generateButton = view.findViewById(R.id.generateSecondButton)
+        instanceButton = view.findViewById(R.id.instanceCounterSecondButton)
+        callButton = view.findViewById(R.id.callSecondObjectButton)
         square = view.findViewById(R.id.secondSquare)
         viewModel = ViewModelProvider(this, viewModelFactory).get(SecondViewModel::class.java)
         viewModel.colorCode.observe(viewLifecycleOwner, Observer {
-                square.setBackgroundColor(viewModel.colorCode.value!!)
+            square.setBackgroundColor(viewModel.colorCode.value!!)
         })
     }
 }
