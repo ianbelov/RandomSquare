@@ -5,7 +5,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class AppModule() {
+abstract class FragmentModule() {
 
     @ContributesAndroidInjector()
     abstract fun getMainFragment(): MainFragment
