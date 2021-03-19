@@ -1,7 +1,9 @@
 package com.a.randomsquare.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,7 @@ import com.a.randomsquare.util.heavyobjects.HeavyObject
 import com.a.randomsquare.viewmodel.FirstViewModel
 import dagger.Lazy
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
@@ -33,6 +36,7 @@ class FirstFragment : Fragment() {
         super.onAttach(context)
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +53,10 @@ class FirstFragment : Fragment() {
             viewModel.callObject()
             Toast.makeText(context, "Lazy called", Toast.LENGTH_SHORT).show()
         }
+        viewModel.subject.subscribe { nextCode ->
+            square.setBackgroundColor(nextCode)
+            Log.d("Rx", "OnNext")
+        }
         return view
     }
 
@@ -58,9 +66,6 @@ class FirstFragment : Fragment() {
         callButton = view.findViewById(R.id.callFirstObjectButton)
         square = view.findViewById(R.id.firstSquare)
         viewModel = ViewModelProvider(this, viewModelFactory).get(FirstViewModel::class.java)
-        viewModel.colorCode.observe(viewLifecycleOwner, Observer {
-            square.setBackgroundColor(viewModel.colorCode.value!!)
-        })
     }
 
 }
