@@ -1,23 +1,33 @@
 package com.a.randomsquare.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.colorsgenerator.IColorsGenerator
 import com.a.randomsquare.util.heavyobjects.HeavyObject
+import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 import javax.inject.Provider
 
-class SecondViewModel @Inject constructor(private var generator: IColorsGenerator, private var heavyObject: Provider<HeavyObject>): ViewModel() {
+class SecondViewModel @Inject constructor(
+    private var generator: IColorsGenerator,
+    private var heavyObject: Provider<HeavyObject>
+) : ViewModel() {
 
-    var colorCode : MutableLiveData<Int> = MutableLiveData()
+    var colorCode: MutableLiveData<Int> = MutableLiveData()
+    var subject = BehaviorSubject.create<MutableLiveData<Int>>()
 
-    fun generateNewColor(code: Int){
+    init {
+        subject.onNext(colorCode)
+    }
+
+    fun generateNewColor(code: Int) {
         colorCode.value = generator.getColor(code)
     }
 
-    fun instanceCount():Int = HeavyObject.instantiationCount
+    fun instanceCount(): Int = HeavyObject.instantiationCount
 
-    fun callObject(){
+    fun callObject() {
         heavyObject.get()
     }
 

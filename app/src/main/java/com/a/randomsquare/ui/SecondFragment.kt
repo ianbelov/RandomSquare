@@ -1,7 +1,9 @@
 package com.a.randomsquare.ui
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +32,7 @@ class SecondFragment : Fragment() {
         super.onAttach(context)
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,8 +49,14 @@ class SecondFragment : Fragment() {
             viewModel.callObject()
             Toast.makeText(context, "Provider called", Toast.LENGTH_SHORT).show()
         }
+        viewModel.subject.subscribe { onNext ->
+            onNext.observe(viewLifecycleOwner, Observer {
+                square.setBackgroundColor(viewModel.colorCode.value!!)
+            })
+        }
         return view
     }
+
 
     private fun init(view: View) {
         generateButton = view.findViewById(R.id.generateSecondButton)
@@ -55,8 +64,5 @@ class SecondFragment : Fragment() {
         callButton = view.findViewById(R.id.callSecondObjectButton)
         square = view.findViewById(R.id.secondSquare)
         viewModel = ViewModelProvider(this, viewModelFactory).get(SecondViewModel::class.java)
-        viewModel.colorCode.observe(viewLifecycleOwner, Observer {
-            square.setBackgroundColor(viewModel.colorCode.value!!)
-        })
     }
 }
