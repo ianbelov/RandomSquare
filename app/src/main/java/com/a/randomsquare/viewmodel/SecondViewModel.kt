@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.colorsgenerator.IColorsGenerator
 import com.a.randomsquare.util.heavyobjects.HeavyObject
+import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 import javax.inject.Provider
@@ -16,18 +17,14 @@ class SecondViewModel @Inject constructor(
     private var heavyObject: Provider<HeavyObject>
 ) : ViewModel() {
 
-    var colorCode: MutableLiveData<Int> = MutableLiveData()
-    var subject = BehaviorSubject.create<MutableLiveData<Int>>()
-
-    init {
-        subject.onNext(colorCode)
-        subject.subscribe { onNext ->
-            colorCode = onNext
-        }
+    var colorCodeLiveData: MutableLiveData<Int> = MutableLiveData()
+    var observable: Observable<Int> = Observable.create {
+        it.onNext(((1..5).random()))
     }
 
-    fun generateNewColor(code: Int) {
-        colorCode.value = generator.getColor(code)
+    fun generateRandomColor() {
+        observable.map { generator.getColor(it) }
+            .subscribe { colorCodeLiveData.value = it }
     }
 
     fun instanceCount(): Int = HeavyObject.instantiationCount

@@ -3,7 +3,6 @@ package com.a.randomsquare.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,7 +39,7 @@ class SecondFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_second, container, false)
         init(view)
         generateButton.setOnClickListener {
-            viewModel.generateNewColor(((1..5).random()))
+            viewModel.generateRandomColor()
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
@@ -49,8 +48,8 @@ class SecondFragment : Fragment() {
             viewModel.callObject()
             Toast.makeText(context, "Provider called", Toast.LENGTH_SHORT).show()
         }
-        viewModel.colorCode.observe(viewLifecycleOwner, Observer {
-            square.setBackgroundColor(viewModel.colorCode.value!!)
+        viewModel.colorCodeLiveData.observe(viewLifecycleOwner, Observer {
+            square.setBackgroundColor(viewModel.colorCodeLiveData.value!!)
         })
 
         return view
