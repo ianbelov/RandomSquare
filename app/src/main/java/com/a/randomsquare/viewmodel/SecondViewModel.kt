@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.colorsgenerator.IColorsGenerator
 import com.a.randomsquare.util.heavyobjects.HeavyObject
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 import javax.inject.Provider
@@ -24,6 +26,8 @@ class SecondViewModel @Inject constructor(
 
     fun generateRandomColor() {
         observable.map { generator.getColor(it) }
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
             .subscribe { colorCodeLiveData.value = it }
     }
 

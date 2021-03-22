@@ -13,6 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.R
 import com.a.randomsquare.viewmodel.FirstViewModel
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
@@ -38,9 +41,10 @@ class FirstFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first, container, false)
         init(view)
         generateButton.setOnClickListener {
-            viewModel.getColorObservable().subscribe { onNext ->
-                square.setBackgroundColor(onNext)
-            }
+            viewModel.getColorObservable()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { onNext -> square.setBackgroundColor(onNext) }
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
