@@ -10,14 +10,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.R
-import com.a.randomsquare.util.heavyobjects.HeavyObject
 import com.a.randomsquare.viewmodel.FirstViewModel
-import dagger.Lazy
 import dagger.android.support.AndroidSupportInjection
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
@@ -44,7 +40,10 @@ class FirstFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first, container, false)
         init(view)
         generateButton.setOnClickListener {
-            viewModel.generateNewColor(((1..5).random()))
+            viewModel.generateNewColor().subscribe { onNext ->
+                square.setBackgroundColor(onNext)
+                Log.d("Rx", "OnNext")
+            }
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
@@ -53,10 +52,7 @@ class FirstFragment : Fragment() {
             viewModel.callObject()
             Toast.makeText(context, "Lazy called", Toast.LENGTH_SHORT).show()
         }
-        viewModel.subject.subscribe { nextCode ->
-            square.setBackgroundColor(nextCode)
-            Log.d("Rx", "OnNext")
-        }
+
         return view
     }
 
