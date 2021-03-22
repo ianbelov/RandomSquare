@@ -15,16 +15,14 @@ class FirstViewModel @Inject constructor(
     private var generator: IColorsGenerator,
     private var heavyObject: Lazy<HeavyObject>
 ) : ViewModel() {
-
-    fun generateNewColor():Observable<Int> {
-        Log.d("Generate", "Start")
-        var observable: Observable<Int> = Observable.create {
-            it.onNext(((1..5).random()))
-        }
-        return observable.map {
-            generator.getColor(it)
-        }
+    var observable: Observable<Int> = Observable.create {
+        it.onNext(((1..5).random()))
     }
+
+    fun getColorObservable(): Observable<Int> = observable.map {
+        generator.getColor(it)
+    }
+
 
     fun instanceCount(): Int = HeavyObject.instantiationCount
 

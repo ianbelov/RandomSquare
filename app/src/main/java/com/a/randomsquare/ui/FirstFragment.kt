@@ -1,6 +1,5 @@
 package com.a.randomsquare.ui
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -32,7 +31,6 @@ class FirstFragment : Fragment() {
         super.onAttach(context)
     }
 
-    @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,9 +38,8 @@ class FirstFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first, container, false)
         init(view)
         generateButton.setOnClickListener {
-            viewModel.generateNewColor().subscribe { onNext ->
+            viewModel.getColorObservable().subscribe { onNext ->
                 square.setBackgroundColor(onNext)
-                Log.d("Rx", "OnNext")
             }
         }
         instanceButton.setOnClickListener {
@@ -52,7 +49,6 @@ class FirstFragment : Fragment() {
             viewModel.callObject()
             Toast.makeText(context, "Lazy called", Toast.LENGTH_SHORT).show()
         }
-
         return view
     }
 
