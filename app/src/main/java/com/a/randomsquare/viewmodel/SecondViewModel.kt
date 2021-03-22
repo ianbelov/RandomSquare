@@ -1,5 +1,6 @@
 package com.a.randomsquare.viewmodel
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,7 @@ import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 import javax.inject.Provider
 
+@SuppressLint("CheckResult")
 class SecondViewModel @Inject constructor(
     private var generator: IColorsGenerator,
     private var heavyObject: Provider<HeavyObject>
@@ -19,6 +21,9 @@ class SecondViewModel @Inject constructor(
 
     init {
         subject.onNext(colorCode)
+        subject.subscribe { onNext ->
+            colorCode = onNext
+        }
     }
 
     fun generateNewColor(code: Int) {

@@ -49,11 +49,10 @@ class SecondFragment : Fragment() {
             viewModel.callObject()
             Toast.makeText(context, "Provider called", Toast.LENGTH_SHORT).show()
         }
-        viewModel.subject.subscribe { onNext ->
-            onNext.observe(viewLifecycleOwner, Observer {
-                square.setBackgroundColor(viewModel.colorCode.value!!)
-            })
-        }
+        viewModel.colorCode.observe(viewLifecycleOwner, Observer {
+            square.setBackgroundColor(viewModel.colorCode.value!!)
+        })
+
         return view
     }
 
