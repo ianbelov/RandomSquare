@@ -45,6 +45,8 @@ class FirstFragment : Fragment() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
+            viewModel.getBackgroundColorObservable()
+                .subscribe { onNext -> view.setBackgroundColor(onNext.code) }
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
