@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -28,6 +29,7 @@ class FirstFragment : Fragment() {
     lateinit var instanceButton: Button
     lateinit var callButton: Button
     lateinit var square: View
+    lateinit var textView: TextView
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -46,7 +48,10 @@ class FirstFragment : Fragment() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
             viewModel.getBackgroundColorObservable()
-                .subscribe { onNext -> view.setBackgroundColor(onNext.code) }
+                .subscribe { onNext ->
+                    view.setBackgroundColor(onNext.code)
+                    textView.text = onNext.name
+                 }
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
@@ -63,6 +68,7 @@ class FirstFragment : Fragment() {
         instanceButton = view.findViewById(R.id.instanceCounterFirstButton)
         callButton = view.findViewById(R.id.callFirstObjectButton)
         square = view.findViewById(R.id.firstSquare)
+        textView = view.findViewById(R.id.firstTextView)
         viewModel = ViewModelProvider(this, viewModelFactory).get(FirstViewModel::class.java)
     }
 

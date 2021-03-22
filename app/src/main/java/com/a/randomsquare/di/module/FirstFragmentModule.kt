@@ -20,7 +20,7 @@ import javax.inject.Singleton
 abstract class FirstFragmentModule {
 
     @Binds
-    abstract fun provideFirstColorsGenerator(generator: FirstColorsGeneratorImpl): IColorsGenerator
+    abstract fun provideFirstColorsGenerator(generator: SecondColorsGeneratorImpl): IColorsGenerator
 
     @Binds
     @IntoMap
