@@ -48,7 +48,12 @@ class FirstFragment : Fragment() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
-            viewModel.getBackgroundColorObservable(this)
+            viewModel.getBackgroundColorObservable()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { next ->
+                    view.setBackgroundColor(next.code)
+                    textView.text = next.name
+                }
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
@@ -58,11 +63,6 @@ class FirstFragment : Fragment() {
             Toast.makeText(context, "Lazy called", Toast.LENGTH_SHORT).show()
         }
         return view
-    }
-
-    fun setBackgroundColor(color:Color){
-        view?.setBackgroundColor(color.code)
-        textView.setText(color.name)
     }
 
     private fun init(view: View) {

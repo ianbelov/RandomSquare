@@ -28,8 +28,8 @@ class FirstViewModel @Inject constructor(
         colorGenerator.getColor(it)
     }
 
-    fun getBackgroundColorObservable(fragment: FirstFragment) {
-        observable
+    fun getBackgroundColorObservable(): Observable<Color> {
+        return observable
             .filter { x -> x != 4 }
             .subscribeOn(Schedulers.io())
             .doAfterNext { Log.d("Map",Thread.currentThread().name) }
@@ -40,11 +40,6 @@ class FirstViewModel @Inject constructor(
                     )
                     Log.d("FlatMap", Thread.currentThread().name)
                 }.subscribeOn(Schedulers.computation())
-            }
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { onNext ->
-                Log.d("Subscribe",Thread.currentThread().name)
-                fragment.setBackgroundColor(onNext)
             }
     }
 
