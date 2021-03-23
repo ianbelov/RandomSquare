@@ -1,6 +1,9 @@
 package com.a.randomsquare.viewmodel
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.a.randomsquare.ui.FirstFragment
 import com.a.randomsquare.util.colorsgenerator.Color
 import com.a.randomsquare.util.colorsgenerator.IColorsGenerator
 import com.a.randomsquare.util.colorsgenerator.NameGeneratorImpl
@@ -11,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-
+@SuppressLint("CheckResult")
 class FirstViewModel @Inject constructor(
     private var colorGenerator: IColorsGenerator,
     private var heavyObject: Lazy<HeavyObject>,
@@ -25,15 +28,28 @@ class FirstViewModel @Inject constructor(
         colorGenerator.getColor(it)
     }
 
-    fun getBackgroundColorObservable(): Observable<Color> {
-        return observable.subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    fun getBackgroundColorObservable(fragment: FirstFragment) {
+        observable
             .filter { x -> x != 4 }
-            .map { colorGenerator.getColor(it) }
-            .subscribeOn(Schedulers.computation())
-            .flatMap { code -> Observable.create { it.onNext(Color(nameGenerator.getColorName(code),code))}}
+            .subscribeOn(Schedulers.io())
+            .doAfterNext { Log.d("Map",Thread.currentThread().name) }
+            .flatMap { code ->
+                Observable.create<Color> {
+                    it.onNext(
+                        generateColor(code)
+                    )
+                    Log.d("FlatMap", Thread.currentThread().name)
+                }.subscribeOn(Schedulers.computation())
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { onNext ->
+                Log.d("Subscribe",Thread.currentThread().name)
+                fragment.setBackgroundColor(onNext)
+            }
     }
 
+    private fun generateColor(code: Int): Color =
+        Color(nameGenerator.getColorName(code), colorGenerator.getColor(code))
 
     fun instanceCount(): Int = HeavyObject.instantiationCount
 

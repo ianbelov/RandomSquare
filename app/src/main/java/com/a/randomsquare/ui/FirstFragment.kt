@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.R
+import com.a.randomsquare.util.colorsgenerator.Color
 import com.a.randomsquare.viewmodel.FirstViewModel
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Scheduler
@@ -47,11 +48,7 @@ class FirstFragment : Fragment() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
-            viewModel.getBackgroundColorObservable()
-                .subscribe { onNext ->
-                    view.setBackgroundColor(onNext.code)
-                    textView.text = onNext.name
-                 }
+            viewModel.getBackgroundColorObservable(this)
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
@@ -61,6 +58,11 @@ class FirstFragment : Fragment() {
             Toast.makeText(context, "Lazy called", Toast.LENGTH_SHORT).show()
         }
         return view
+    }
+
+    fun setBackgroundColor(color:Color){
+        view?.setBackgroundColor(color.code)
+        textView.setText(color.name)
     }
 
     private fun init(view: View) {
