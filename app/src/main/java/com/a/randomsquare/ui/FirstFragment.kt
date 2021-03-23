@@ -45,12 +45,8 @@ class FirstFragment : Fragment() {
         init(view)
         generateButton.setOnClickListener {
             viewModel.getColorObservable()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
-            viewModel.getBackgroundColorObservable()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { next ->
+            viewModel.getBackgroundColorObservable().subscribe { next ->
                     view.setBackgroundColor(next.code)
                     textView.text = next.name
                 }

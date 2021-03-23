@@ -24,24 +24,22 @@ class FirstViewModel @Inject constructor(
         it.onNext(((1..5).random()))
     }
 
-    fun getColorObservable(): Observable<Int> = observable.map {
-        colorGenerator.getColor(it)
-    }
+    fun getColorObservable(): Observable<Int> = observable.map { colorGenerator.getColor(it) }
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
 
     fun getBackgroundColorObservable(): Observable<Color> {
         return observable
             .filter { x -> x != 4 }
+            .doAfterNext { Log.d("Filter", Thread.currentThread().name) }
             .subscribeOn(Schedulers.io())
-            .doAfterNext { Log.d("Map",Thread.currentThread().name) }
-            .flatMap { code ->
-                Observable.create<Color> {
-                    it.onNext(
-                        generateColor(code)
-                    )
-                    Log.d("FlatMap", Thread.currentThread().name)
-                }.subscribeOn(Schedulers.computation())
-            }
+            .observeOn(Schedulers.computation())
+            .map { code -> generateColor(code) }
+            .doAfterNext { Log.d("Map", Thread.currentThread().name) }
+            .observeOn(AndroidSchedulers.mainThread())
+            .doAfterNext { Log.d("Observe", Thread.currentThread().name) }
     }
+
 
     private fun generateColor(code: Int): Color =
         Color(nameGenerator.getColorName(code), colorGenerator.getColor(code))
