@@ -9,10 +9,13 @@ import com.a.randomsquare.util.colorsgenerator.IColorsGenerator
 import com.a.randomsquare.util.colorsgenerator.NameGeneratorImpl
 import com.a.randomsquare.util.heavyobjects.HeavyObject
 import dagger.Lazy
+import io.reactivex.Maybe
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.lang.Exception
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @SuppressLint("CheckResult")
@@ -27,12 +30,15 @@ class FirstViewModel @Inject constructor(
 
     fun getColorObservable(): Observable<Int> =
         observable.map { colorGenerator.getColor(it) }
+            .delay(2, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
 
     fun getBackgroundColorObservable(): Observable<Color> =
         observable
-            .doOnNext { onNext -> if (onNext == 4) throw RuntimeException() }
+            .delay(2, TimeUnit.SECONDS)
+            .doOnNext { Log.d("Value", it.toString()) }
+            .filter { x -> x != 4 }
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.computation())
             .map { code -> generateColor(code) }

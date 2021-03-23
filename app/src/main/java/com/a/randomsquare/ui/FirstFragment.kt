@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -29,6 +30,7 @@ class FirstFragment : Fragment() {
     lateinit var generateButton: Button
     lateinit var instanceButton: Button
     lateinit var callButton: Button
+    lateinit var progressBar: ProgressBar
     lateinit var square: View
     lateinit var textView: TextView
 
@@ -44,12 +46,18 @@ class FirstFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_first, container, false)
         init(view)
         generateButton.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
             viewModel.getColorObservable()
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
-            viewModel.getBackgroundColorObservable().subscribe({ next ->
-                view.setBackgroundColor(next.code)
-                textView.text = next.name
-            }, { Toast.makeText(context, "Произошла ошибка", Toast.LENGTH_SHORT).show() })
+            viewModel.getBackgroundColorObservable().subscribe(
+                { next ->
+                    Log.d("next", "q")
+                    view.setBackgroundColor(next.code)
+                    textView.text = next.name
+                    progressBar.visibility = View.INVISIBLE
+                },
+                { Log.d("Error", "q") },
+                { Log.d("Completed", "q") })
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
@@ -66,6 +74,7 @@ class FirstFragment : Fragment() {
         instanceButton = view.findViewById(R.id.instanceCounterFirstButton)
         callButton = view.findViewById(R.id.callFirstObjectButton)
         square = view.findViewById(R.id.firstSquare)
+        progressBar = view.findViewById(R.id.progressBar)
         textView = view.findViewById(R.id.firstTextView)
         viewModel = ViewModelProvider(this, viewModelFactory).get(FirstViewModel::class.java)
     }
