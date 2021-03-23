@@ -46,10 +46,10 @@ class FirstFragment : Fragment() {
         generateButton.setOnClickListener {
             viewModel.getColorObservable()
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
-            viewModel.getBackgroundColorObservable().subscribe { next ->
-                    view.setBackgroundColor(next.code)
-                    textView.text = next.name
-                }
+            viewModel.getBackgroundColorObservable().subscribe({ next ->
+                view.setBackgroundColor(next.code)
+                textView.text = next.name
+            }, { Toast.makeText(context, "Произошла ошибка", Toast.LENGTH_SHORT).show() })
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()

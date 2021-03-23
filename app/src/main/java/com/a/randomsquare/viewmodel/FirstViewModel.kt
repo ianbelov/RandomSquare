@@ -12,6 +12,7 @@ import dagger.Lazy
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import java.lang.Exception
 import javax.inject.Inject
 
 @SuppressLint("CheckResult")
@@ -24,21 +25,18 @@ class FirstViewModel @Inject constructor(
         it.onNext(((1..5).random()))
     }
 
-    fun getColorObservable(): Observable<Int> = observable.map { colorGenerator.getColor(it) }
-        .subscribeOn(Schedulers.newThread())
-        .observeOn(AndroidSchedulers.mainThread())
+    fun getColorObservable(): Observable<Int> =
+        observable.map { colorGenerator.getColor(it) }
+            .subscribeOn(Schedulers.newThread())
+            .observeOn(AndroidSchedulers.mainThread())
 
-    fun getBackgroundColorObservable(): Observable<Color> {
-        return observable
-            .filter { x -> x != 4 }
-            .doAfterNext { Log.d("Filter", Thread.currentThread().name) }
+    fun getBackgroundColorObservable(): Observable<Color> =
+        observable
+            .doOnNext { onNext -> if (onNext == 4) throw RuntimeException() }
             .subscribeOn(Schedulers.io())
             .observeOn(Schedulers.computation())
             .map { code -> generateColor(code) }
-            .doAfterNext { Log.d("Map", Thread.currentThread().name) }
             .observeOn(AndroidSchedulers.mainThread())
-            .doAfterNext { Log.d("Observe", Thread.currentThread().name) }
-    }
 
 
     private fun generateColor(code: Int): Color =
