@@ -7,7 +7,7 @@
     tools:context=".ui.FirstFragment">
 
     <com.a.randomsquare.ui.SquareCustomView
-        android:id="@+id/firstSquare"
+        android:id="@+id/custom_square"
         android:layout_width="120dp"
         android:layout_height="150dp"
         android:layout_marginStart="16dp"
@@ -21,7 +21,6 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/generateFirstButton"
+            android:id="@+id/generate_color_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -43,14 +42,14 @@
             android:text="color" />
 
         <Button
-            android:id="@+id/instanceCounterFirstButton"
+            android:id="@+id/object_instance_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="count" />
 
         <Button
-            android:id="@+id/callFirstObjectButton"
+            android:id="@+id/object_call_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -64,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/linear_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -76,5 +75,5 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstSquare" />
+        app:layout_constraintTop_toBottomOf="@+id/custom_square" />
 </androidx.constraintlayout.widget.ConstraintLayout>
