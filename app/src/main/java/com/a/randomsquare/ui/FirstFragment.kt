@@ -51,13 +51,20 @@ class FirstFragment : Fragment() {
                 .subscribe { onNext -> square.setBackgroundColor(onNext) }
             viewModel.getBackgroundColorObservable().subscribe(
                 { next ->
-                    Log.d("next", "q")
+                    Log.d("Fragment", next.code.toString())
                     view.setBackgroundColor(next.code)
                     textView.text = next.name
                     progressBar.visibility = View.INVISIBLE
                 },
-                { Log.d("Error", "q") },
-                { Log.d("Completed", "q") })
+                {
+                    progressBar.visibility = View.INVISIBLE
+                    Toast.makeText(context,"Произошла ошибка", Toast.LENGTH_SHORT).show()
+                    Log.d("Fragment", " error")
+                },
+                {
+                    progressBar.visibility = View.INVISIBLE
+                    Log.d("Fragment", " completed")
+                })
         }
         instanceButton.setOnClickListener {
             Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
