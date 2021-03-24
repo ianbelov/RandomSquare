@@ -4,5 +4,4 @@
         <attr name="customText" format="string" localization="suggested" />
         <attr name="customBackground" format="color" />
     </declare-styleable>
-
 </resources>

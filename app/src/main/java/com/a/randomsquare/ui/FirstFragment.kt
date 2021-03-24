@@ -45,12 +45,12 @@ class FirstFragment : Fragment() {
         generateButton.setOnClickListener {
             progressBar.visibility = View.VISIBLE
             viewModel.getColorObservable()
-                .subscribe { onNext -> customView.setCustomBackground(onNext) }
+                .subscribe { onNext -> customView.square.setBackgroundColor(onNext) }
             viewModel.getBackgroundColorObservable().subscribe(
                 { next ->
                     Log.d("Fragment", next.code.toString())
                     view.setBackgroundColor(next.code)
-                    customView.setCustomText(next.name)
+                    customView.textView.text = next.name
                     progressBar.visibility = View.INVISIBLE
                 },
                 {
