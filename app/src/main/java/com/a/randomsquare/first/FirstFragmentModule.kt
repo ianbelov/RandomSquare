@@ -1,10 +1,10 @@
 package com.a.randomsquare.first
 
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorgenerator.IColorsGenerator
-import com.a.randomsquare.generator.namegenerator.INameGenerator
-import com.a.randomsquare.generator.namegenerator.NameGeneratorImpl
-import com.a.randomsquare.generator.colorgenerator.SecondColorsGeneratorImpl
+import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
+import com.a.randomsquare.generator.colornamegenerator.INameGenerator
+import com.a.randomsquare.generator.colornamegenerator.NameGeneratorImpl
+import com.a.randomsquare.generator.colorcodegenerator.SecondColorsGeneratorImpl
 import com.a.randomsquare.common.ViewModelKey
 import dagger.Binds
 import dagger.Module

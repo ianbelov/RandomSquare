@@ -3,9 +3,9 @@ package com.a.randomsquare.first
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorgenerator.Color
-import com.a.randomsquare.generator.colorgenerator.IColorsGenerator
-import com.a.randomsquare.generator.namegenerator.NameGeneratorImpl
+import com.a.randomsquare.generator.colorcodegenerator.Color
+import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
+import com.a.randomsquare.generator.colornamegenerator.NameGeneratorImpl
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

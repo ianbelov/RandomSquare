@@ -1,8 +1,8 @@
 package com.a.randomsquare.second
 
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorgenerator.IColorsGenerator
-import com.a.randomsquare.generator.colorgenerator.SecondColorsGeneratorImpl
+import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
+import com.a.randomsquare.generator.colorcodegenerator.SecondColorsGeneratorImpl
 import com.a.randomsquare.common.ViewModelKey
 import dagger.Binds
 import dagger.Module

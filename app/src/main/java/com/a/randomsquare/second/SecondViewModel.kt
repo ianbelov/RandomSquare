@@ -3,7 +3,7 @@ package com.a.randomsquare.second
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorgenerator.IColorsGenerator
+import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
