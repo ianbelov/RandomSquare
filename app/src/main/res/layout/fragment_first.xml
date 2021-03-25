@@ -20,52 +20,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <LinearLayout
+    <Button
+        android:id="@+id/generate_color_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:orientation="horizontal"
-        android:text="@string/generate"
-        android:weightSum="3"
+        android:layout_weight="1"
+        android:text="Generate color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/generate_color_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="color" />
-
-        <Button
-            android:id="@+id/object_instance_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="count" />
-
-        <Button
-            android:id="@+id/object_call_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"
-            android:text="call" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/firstTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/linear_layout"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <ProgressBar
         android:id="@+id/progressBar"
