@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
@@ -15,10 +14,10 @@ import com.a.randomsquare.databinding.SquareCustomViewBinding
 class SquareCustomView(context: Context, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
     private var root: View
-    private var binding: SquareCustomViewBinding
+    private var _binding: SquareCustomViewBinding? = null
+    private val binding get()= _binding!!
     var text: String = "ExAmPlE"
         set(value) {
-            Log.d("Set", value)
             field = value
             binding.customTextView.text = field
         }
@@ -29,7 +28,7 @@ class SquareCustomView(context: Context, attrs: AttributeSet?) : LinearLayout(co
         }
 
     init {
-        binding = SquareCustomViewBinding.inflate(LayoutInflater.from(context), this, true)
+        _binding = SquareCustomViewBinding.inflate(LayoutInflater.from(context), this, true)
         root = binding.root
         binding.customView.setBackgroundColor(Color.GRAY)
         binding.customTextView.text = "Example"

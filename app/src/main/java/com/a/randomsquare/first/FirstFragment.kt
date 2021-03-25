@@ -17,7 +17,8 @@ class FirstFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var viewModel: FirstViewModel
-    private lateinit var binding: FragmentFirstBinding
+    private var _binding: FragmentFirstBinding? = null
+    private val binding get()= _binding!!
     private lateinit var rootView: View
 
     override fun onAttach(context: Context) {
@@ -53,7 +54,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun init() {
-        binding = FragmentFirstBinding.inflate(layoutInflater)
+        _binding = FragmentFirstBinding.inflate(layoutInflater)
         rootView = binding.root
         viewModel = ViewModelProvider(this, viewModelFactory).get(FirstViewModel::class.java)
     }
