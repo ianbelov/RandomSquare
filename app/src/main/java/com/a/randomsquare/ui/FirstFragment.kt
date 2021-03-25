@@ -34,11 +34,11 @@ class FirstFragment : Fragment() {
         binding.generateColorButton.setOnClickListener {
             binding.progressBar.visibility = View.VISIBLE
             viewModel.getColorObservable()
-                .subscribe { onNext -> binding.customSquare.square.setBackgroundColor(onNext) }
+                .subscribe { onNext -> binding.customSquare.color = onNext }
             viewModel.getBackgroundColorObservable().subscribe(
                 { next ->
                     binding.root.setBackgroundColor(next.code)
-                    binding.customSquare.textView.text = next.name
+                    binding.customSquare.text = next.name
                     binding.progressBar.visibility = View.INVISIBLE
                 },
                 {
