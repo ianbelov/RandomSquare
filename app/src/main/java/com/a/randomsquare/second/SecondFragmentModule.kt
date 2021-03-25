@@ -2,8 +2,8 @@ package com.a.randomsquare.second
 
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.ViewModelKey
-import com.a.randomsquare.util.colorcodegenerator.IColorsGenerator
-import com.a.randomsquare.util.colorcodegenerator.SecondColorsGeneratorImpl
+import com.a.randomsquare.util.colornamegenerator.ColorNameGeneratorImpl
+import com.a.randomsquare.util.colornamegenerator.IColorNameGenerator
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -12,7 +12,7 @@ import dagger.multibindings.IntoMap
 abstract class SecondFragmentModule {
 
     @Binds
-    abstract fun provideSecondColorsGenerator(generator: SecondColorsGeneratorImpl): IColorsGenerator
+    abstract fun provideSecondColorsGenerator(generator: ColorNameGeneratorImpl): IColorNameGenerator
 
     @Binds
     @IntoMap

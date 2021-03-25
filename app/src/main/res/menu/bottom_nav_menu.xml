@@ -3,14 +3,17 @@
 
     <item
         android:id="@+id/navigation_first"
+        android:icon="@drawable/ic_icon1"
         android:title="First" />
 
     <item
         android:id="@+id/navigation_second"
+        android:icon="@drawable/ic_icon2"
         android:title="Second" />
 
     <item
         android:id="@+id/navigation_third"
+        android:icon="@drawable/ic_icon3"
         android:title="Third" />
 
 </menu>

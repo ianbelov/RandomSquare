@@ -33,7 +33,7 @@ class SecondFragment : Fragment() {
             viewModel.generateRandomColor()
         }
         viewModel.colorCodeLiveData.observe(viewLifecycleOwner, {
-            binding.secondSquare.setBackgroundColor(viewModel.colorCodeLiveData.value!!)
+            binding.secondTextView.text = viewModel.colorCodeLiveData.value!!
         })
 
         return rootView
