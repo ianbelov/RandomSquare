@@ -19,7 +19,7 @@ class FirstViewModel @Inject constructor(
         it.onComplete()
     }
     var backgroundColorCode: Int = android.graphics.Color.GRAY
-    var customSquareColor: Color = Color("Example", android.graphics.Color.WHITE)
+    var customSquareColor: Color = Color("Example", android.graphics.Color.TRANSPARENT)
 
     fun getColorObservable(): Observable<Int> =
         observable.map { colorGenerator.getColor(it) }
