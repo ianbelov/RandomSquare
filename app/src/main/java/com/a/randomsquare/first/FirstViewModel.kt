@@ -1,7 +1,6 @@
 package com.a.randomsquare.first
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.generator.colorcodegenerator.Color
 import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
@@ -21,12 +20,15 @@ class FirstViewModel @Inject constructor(
         it.onNext((1..5).random())
         it.onComplete()
     }
+    var backgroundColorCode: Int = android.graphics.Color.GRAY
+    var customSquareColor: Color = Color("Example", android.graphics.Color.WHITE)
 
     fun getColorObservable(): Observable<Int> =
         observable.map { colorGenerator.getColor(it) }
             .delay(2, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { backgroundColorCode = it }
 
     fun getBackgroundColorObservable(): Observable<Color> =
         observable
@@ -37,10 +39,11 @@ class FirstViewModel @Inject constructor(
             .observeOn(Schedulers.computation())
             .map { code -> generateColor(code) }
             .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext { customSquareColor = it }
 
-    private fun generateColor(code: Int): Color {
-        Log.d("Generate", code.toString())
-        return Color(nameGenerator.getColorName(code), colorGenerator.getColor(code))
-    }
+    private fun generateColor(code: Int): Color = Color(
+        nameGenerator.getColorName(code),
+        colorGenerator.getColor(code)
+    )
 
 }

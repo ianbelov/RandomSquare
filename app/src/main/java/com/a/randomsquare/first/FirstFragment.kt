@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.navGraphViewModels
+import com.a.randomsquare.R
 import com.a.randomsquare.databinding.FragmentFirstBinding
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -16,15 +18,12 @@ class FirstFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var viewModel: FirstViewModel
+    private val viewModel: FirstViewModel by navGraphViewModels(
+        R.id.mobile_navigation
+    ) { viewModelFactory }
     private var _binding: FragmentFirstBinding? = null
-    private val binding get()= _binding!!
+    private val binding get() = _binding!!
     private lateinit var rootView: View
-
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,14 +48,20 @@ class FirstFragment : Fragment() {
                     binding.progressBar.visibility = View.INVISIBLE
                 })
         }
-
         return rootView
     }
 
     private fun init() {
         _binding = FragmentFirstBinding.inflate(layoutInflater)
         rootView = binding.root
-        viewModel = ViewModelProvider(this, viewModelFactory).get(FirstViewModel::class.java)
+        binding.root.setBackgroundColor(viewModel.customSquareColor.code)
+        binding.customSquare.color = viewModel.backgroundColorCode
+        binding.customSquare.text = viewModel.customSquareColor.name
+    }
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
     }
 
 }

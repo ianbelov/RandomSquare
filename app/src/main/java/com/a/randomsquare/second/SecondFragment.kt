@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.navGraphViewModels
+import com.a.randomsquare.R
 import com.a.randomsquare.databinding.FragmentSecondBinding
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -17,15 +19,12 @@ class SecondFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var viewModel: SecondViewModel
+    private val viewModel: SecondViewModel by navGraphViewModels(
+        R.id.mobile_navigation
+    ) { viewModelFactory }
     private var _binding: FragmentSecondBinding? = null
-    private val binding get()= _binding!!
+    private val binding get() = _binding!!
     private lateinit var rootView: View
-
-    override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
-        super.onAttach(context)
-    }
 
     @SuppressLint("CheckResult")
     override fun onCreateView(
@@ -46,11 +45,15 @@ class SecondFragment : Fragment() {
     private fun init() {
         _binding = FragmentSecondBinding.inflate(layoutInflater)
         rootView = binding.root
-        viewModel = ViewModelProvider(this, viewModelFactory).get(SecondViewModel::class.java)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
     }
 }
