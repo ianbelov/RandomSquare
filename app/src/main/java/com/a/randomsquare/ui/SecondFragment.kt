@@ -52,7 +52,7 @@ class SecondFragment : Fragment() {
             binding.secondSquare.setBackgroundColor(viewModel.colorCodeLiveData.value!!)
         })
 
-        return view
+        return rootView
     }
 
     private fun init() {
