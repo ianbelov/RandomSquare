@@ -1,9 +1,9 @@
 package com.a.randomsquare.second
 
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
-import com.a.randomsquare.generator.colorcodegenerator.SecondColorsGeneratorImpl
-import com.a.randomsquare.common.ViewModelKey
+import com.a.randomsquare.util.ViewModelKey
+import com.a.randomsquare.util.colorcodegenerator.IColorsGenerator
+import com.a.randomsquare.util.colorcodegenerator.SecondColorsGeneratorImpl
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -18,5 +18,4 @@ abstract class SecondFragmentModule {
     @IntoMap
     @ViewModelKey(SecondViewModel::class)
     internal abstract fun secondViewModel(viewModel: SecondViewModel): ViewModel
-
 }

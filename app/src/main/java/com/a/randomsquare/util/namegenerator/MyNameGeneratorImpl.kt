@@ -1,4 +1,4 @@
-package com.a.randomsquare.generator.namegenerator
+package com.a.randomsquare.util.namegenerator
 
 import javax.inject.Inject
 

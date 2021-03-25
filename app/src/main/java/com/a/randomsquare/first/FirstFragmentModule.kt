@@ -1,11 +1,11 @@
 package com.a.randomsquare.first
 
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
-import com.a.randomsquare.generator.colornamegenerator.IColorNameGenerator
-import com.a.randomsquare.generator.colornamegenerator.ColorNameGeneratorImpl
-import com.a.randomsquare.generator.colorcodegenerator.SecondColorsGeneratorImpl
-import com.a.randomsquare.common.ViewModelKey
+import com.a.randomsquare.util.ViewModelKey
+import com.a.randomsquare.util.colorcodegenerator.IColorsGenerator
+import com.a.randomsquare.util.colorcodegenerator.SecondColorsGeneratorImpl
+import com.a.randomsquare.util.colornamegenerator.ColorNameGeneratorImpl
+import com.a.randomsquare.util.colornamegenerator.IColorNameGenerator
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -23,5 +23,4 @@ abstract class FirstFragmentModule {
     @IntoMap
     @ViewModelKey(FirstViewModel::class)
     internal abstract fun firstViewModel(viewModel: FirstViewModel): ViewModel
-
 }

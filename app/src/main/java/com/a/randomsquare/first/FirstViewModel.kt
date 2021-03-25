@@ -1,17 +1,15 @@
 package com.a.randomsquare.first
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.generator.colorcodegenerator.Color
-import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
-import com.a.randomsquare.generator.colornamegenerator.ColorNameGeneratorImpl
+import com.a.randomsquare.util.colorcodegenerator.Color
+import com.a.randomsquare.util.colorcodegenerator.IColorsGenerator
+import com.a.randomsquare.util.colornamegenerator.ColorNameGeneratorImpl
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-@SuppressLint("CheckResult")
 class FirstViewModel @Inject constructor(
     private var colorGenerator: IColorsGenerator,
     private var nameGenerator: ColorNameGeneratorImpl

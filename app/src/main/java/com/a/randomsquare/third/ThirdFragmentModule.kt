@@ -1,9 +1,9 @@
 package com.a.randomsquare.third
 
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.common.ViewModelKey
-import com.a.randomsquare.generator.namegenerator.INameGenerator
-import com.a.randomsquare.generator.namegenerator.MyNameGeneratorImpl
+import com.a.randomsquare.util.ViewModelKey
+import com.a.randomsquare.util.namegenerator.INameGenerator
+import com.a.randomsquare.util.namegenerator.MyNameGeneratorImpl
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

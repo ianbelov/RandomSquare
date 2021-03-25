@@ -1,4 +1,4 @@
-package com.a.randomsquare.common
+package com.a.randomsquare.di
 
 import android.app.Application
 import com.a.randomsquare.MyApp

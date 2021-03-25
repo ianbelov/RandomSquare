@@ -63,5 +63,4 @@ class FirstFragment : Fragment() {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
-
 }

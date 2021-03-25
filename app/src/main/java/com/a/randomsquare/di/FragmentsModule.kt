@@ -1,4 +1,4 @@
-package com.a.randomsquare.common
+package com.a.randomsquare.di
 
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.first.FirstFragment
@@ -7,6 +7,7 @@ import com.a.randomsquare.second.SecondFragment
 import com.a.randomsquare.second.SecondFragmentModule
 import com.a.randomsquare.third.ThirdFragment
 import com.a.randomsquare.third.ThirdFragmentModule
+import com.a.randomsquare.util.ViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

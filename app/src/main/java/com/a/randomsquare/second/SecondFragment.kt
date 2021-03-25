@@ -1,13 +1,11 @@
 package com.a.randomsquare.second
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navGraphViewModels
 import com.a.randomsquare.R
@@ -26,7 +24,6 @@ class SecondFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var rootView: View
 
-    @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +32,7 @@ class SecondFragment : Fragment() {
         binding.generateSecondButton.setOnClickListener {
             viewModel.generateRandomColor()
         }
-        viewModel.colorCodeLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.colorCodeLiveData.observe(viewLifecycleOwner, {
             binding.secondSquare.setBackgroundColor(viewModel.colorCodeLiveData.value!!)
         })
 
