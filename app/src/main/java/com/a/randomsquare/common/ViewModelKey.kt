@@ -1,4 +1,4 @@
-package com.a.randomsquare.viewmodel
+package com.a.randomsquare.common
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey

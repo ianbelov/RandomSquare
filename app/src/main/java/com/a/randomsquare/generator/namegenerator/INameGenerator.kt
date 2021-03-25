@@ -1,4 +1,4 @@
-package com.a.randomsquare.util.colorsgenerator
+package com.a.randomsquare.generator.namegenerator
 
 interface INameGenerator {
     fun getColorName(code:Int):String

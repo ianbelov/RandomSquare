@@ -1,8 +1,8 @@
-package com.a.randomsquare.util.colorsgenerator
+package com.a.randomsquare.generator.namegenerator
 
 import javax.inject.Inject
 
-class NameGeneratorImpl @Inject constructor():INameGenerator {
+class NameGeneratorImpl @Inject constructor(): INameGenerator {
     override fun getColorName(code: Int): String {
         when (code) {
             1 -> return "BLUE"

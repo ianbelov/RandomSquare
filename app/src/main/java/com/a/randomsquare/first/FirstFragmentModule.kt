@@ -1,15 +1,13 @@
-package com.a.randomsquare.di.module
+package com.a.randomsquare.first
 
 import androidx.lifecycle.ViewModel
-import com.a.randomsquare.util.colorsgenerator.IColorsGenerator
-import com.a.randomsquare.util.colorsgenerator.INameGenerator
-import com.a.randomsquare.util.colorsgenerator.NameGeneratorImpl
-import com.a.randomsquare.util.colorsgenerator.SecondColorsGeneratorImpl
-import com.a.randomsquare.viewmodel.FirstViewModel
-import com.a.randomsquare.viewmodel.ViewModelKey
+import com.a.randomsquare.generator.colorgenerator.IColorsGenerator
+import com.a.randomsquare.generator.namegenerator.INameGenerator
+import com.a.randomsquare.generator.namegenerator.NameGeneratorImpl
+import com.a.randomsquare.generator.colorgenerator.SecondColorsGeneratorImpl
+import com.a.randomsquare.common.ViewModelKey
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.multibindings.IntoMap
 
 @Module

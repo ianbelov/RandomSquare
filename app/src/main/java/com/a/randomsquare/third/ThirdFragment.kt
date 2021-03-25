@@ -1,4 +1,4 @@
-package com.a.randomsquare.ui
+package com.a.randomsquare.third
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

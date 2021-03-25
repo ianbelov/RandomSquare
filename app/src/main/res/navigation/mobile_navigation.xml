@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/navigation_first"
-        android:name="com.a.randomsquare.ui.FirstFragment"
+        android:name="com.a.randomsquare.first.FirstFragment"
         tools:layout="@layout/fragment_first" />
 
     <fragment
         android:id="@+id/navigation_second"
-        android:name="com.a.randomsquare.ui.SecondFragment"
+        android:name="com.a.randomsquare.second.SecondFragment"
         tools:layout="@layout/fragment_second" />
 
     <fragment
         android:id="@+id/navigation_third"
-        android:name="com.a.randomsquare.ui.ThirdFragment"
+        android:name="com.a.randomsquare.third.ThirdFragment"
         tools:layout="@layout/fragment_third" />
 </navigation>

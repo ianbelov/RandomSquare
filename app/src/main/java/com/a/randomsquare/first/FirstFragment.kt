@@ -1,4 +1,4 @@
-package com.a.randomsquare.ui
+package com.a.randomsquare.first
 
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.databinding.FragmentFirstBinding
-import com.a.randomsquare.viewmodel.FirstViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 

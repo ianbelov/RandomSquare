@@ -1,4 +1,4 @@
-package com.a.randomsquare.ui
+package com.a.randomsquare.customview
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,8 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
-import com.a.randomsquare.R
 import com.a.randomsquare.databinding.SquareCustomViewBinding
 
 

@@ -1,4 +1,4 @@
-package com.a.randomsquare.util.colorsgenerator
+package com.a.randomsquare.generator.colorgenerator
 
 import android.content.Context
 import androidx.core.content.ContextCompat

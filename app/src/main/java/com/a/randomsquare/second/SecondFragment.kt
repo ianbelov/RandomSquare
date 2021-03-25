@@ -1,4 +1,4 @@
-package com.a.randomsquare.ui
+package com.a.randomsquare.second
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,15 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.a.randomsquare.R
-import com.a.randomsquare.databinding.FragmentFirstBinding
 import com.a.randomsquare.databinding.FragmentSecondBinding
-import com.a.randomsquare.viewmodel.FirstViewModel
-import com.a.randomsquare.viewmodel.SecondViewModel
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
