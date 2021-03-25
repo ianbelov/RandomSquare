@@ -3,7 +3,6 @@ package com.a.randomsquare.di.module
 import androidx.lifecycle.ViewModelProvider
 import com.a.randomsquare.ui.FirstFragment
 import com.a.randomsquare.ui.SecondFragment
-import com.a.randomsquare.util.heavyobjects.HeavyObject
 import com.a.randomsquare.viewmodel.ViewModelFactory
 import dagger.Binds
 import dagger.Module

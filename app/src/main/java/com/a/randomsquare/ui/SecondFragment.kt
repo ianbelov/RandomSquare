@@ -36,17 +36,10 @@ class SecondFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         init()
         binding.generateSecondButton.setOnClickListener {
             viewModel.generateRandomColor()
-        }
-        binding.instanceCounterSecondButton.setOnClickListener {
-            Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
-        }
-        binding.callSecondObjectButton.setOnClickListener {
-            viewModel.callObject()
-            Toast.makeText(context, "Provider called", Toast.LENGTH_SHORT).show()
         }
         viewModel.colorCodeLiveData.observe(viewLifecycleOwner, Observer {
             binding.secondSquare.setBackgroundColor(viewModel.colorCodeLiveData.value!!)

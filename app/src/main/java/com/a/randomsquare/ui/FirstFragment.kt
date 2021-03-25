@@ -50,15 +50,6 @@ class FirstFragment : Fragment() {
                 })
         }
 
-        binding.objectInstanceButton.setOnClickListener {
-            Toast.makeText(context, viewModel.instanceCount().toString(), Toast.LENGTH_SHORT).show()
-        }
-
-        binding.objectCallButton.setOnClickListener {
-            viewModel.callObject()
-            Toast.makeText(context, "Lazy called", Toast.LENGTH_SHORT).show()
-        }
-
         return rootView
     }
 
