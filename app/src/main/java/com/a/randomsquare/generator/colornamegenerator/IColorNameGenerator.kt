@@ -1,5 +1,5 @@
 package com.a.randomsquare.generator.colornamegenerator
 
-interface INameGenerator {
+interface IColorNameGenerator {
     fun getColorName(code:Int):String
 }

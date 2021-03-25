@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.generator.colorcodegenerator.Color
 import com.a.randomsquare.generator.colorcodegenerator.IColorsGenerator
-import com.a.randomsquare.generator.colornamegenerator.NameGeneratorImpl
+import com.a.randomsquare.generator.colornamegenerator.ColorNameGeneratorImpl
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @SuppressLint("CheckResult")
 class FirstViewModel @Inject constructor(
     private var colorGenerator: IColorsGenerator,
-    private var nameGenerator: NameGeneratorImpl
+    private var nameGenerator: ColorNameGeneratorImpl
 ) : ViewModel() {
     var observable: Observable<Int> = Observable.create {
         it.onNext((1..5).random())

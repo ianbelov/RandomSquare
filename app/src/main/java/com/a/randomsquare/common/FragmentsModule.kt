@@ -5,6 +5,8 @@ import com.a.randomsquare.first.FirstFragment
 import com.a.randomsquare.first.FirstFragmentModule
 import com.a.randomsquare.second.SecondFragment
 import com.a.randomsquare.second.SecondFragmentModule
+import com.a.randomsquare.third.ThirdFragment
+import com.a.randomsquare.third.ThirdFragmentModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -20,4 +22,7 @@ abstract class FragmentsModule() {
 
     @ContributesAndroidInjector(modules = [SecondFragmentModule::class])
     abstract fun secondFragment(): SecondFragment
+
+    @ContributesAndroidInjector(modules = [ThirdFragmentModule::class])
+    abstract fun thirdFragment(): ThirdFragment
 }
