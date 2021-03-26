@@ -1,4 +1,4 @@
-package com.a.randomsquare.third
+package com.a.randomsquare.myname
 
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.ViewModelKey
@@ -9,13 +9,13 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class ThirdFragmentModule {
+abstract class MyNameFragmentModule {
 
     @Binds
     abstract fun provideNameGenerator(generator: MyNameGeneratorImpl): INameGenerator
 
     @Binds
     @IntoMap
-    @ViewModelKey(ThirdViewModel::class)
-    internal abstract fun secondViewModel(viewModel: ThirdViewModel): ViewModel
+    @ViewModelKey(MyNameViewModel::class)
+    internal abstract fun secondViewModel(viewModel: MyNameViewModel): ViewModel
 }

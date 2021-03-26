@@ -1,4 +1,4 @@
-package com.a.randomsquare.first
+package com.a.randomsquare.color
 
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.colorcodegenerator.Color
@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class FirstViewModel @Inject constructor(
+class ColorViewModel @Inject constructor(
     private var colorGenerator: IColorsGenerator,
     private var nameGenerator: ColorNameGeneratorImpl
 ) : ViewModel() {

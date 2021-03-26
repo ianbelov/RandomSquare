@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_first">
+    app:startDestination="@+id/navigation_color">
 
     <fragment
-        android:id="@+id/navigation_first"
-        android:name="com.a.randomsquare.first.FirstFragment"
-        tools:layout="@layout/fragment_first" />
+        android:id="@+id/navigation_color"
+        android:name="com.a.randomsquare.color.ColorFragment"
+        tools:layout="@layout/fragment_color" />
     <fragment
-        android:id="@+id/navigation_second"
-        android:name="com.a.randomsquare.second.SecondFragment"
-        tools:layout="@layout/fragment_second" />
+        android:id="@+id/navigation_color_name"
+        android:name="com.a.randomsquare.colorname.ColorNameFragment"
+        tools:layout="@layout/fragment_color_name" />
     <fragment
-        android:id="@+id/navigation_third"
-        android:name="com.a.randomsquare.third.ThirdFragment"
-        tools:layout="@layout/fragment_third" />
+        android:id="@+id/navigation_my_name"
+        android:name="com.a.randomsquare.myname.MyNameFragment"
+        tools:layout="@layout/fragment_my_name" />
 </navigation>

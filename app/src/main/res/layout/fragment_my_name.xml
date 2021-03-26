@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".third.ThirdFragment">
+    tools:context=".myname.MyNameFragment">
 
     <TextView
         android:id="@+id/name_text_view"

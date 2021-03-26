@@ -1,4 +1,4 @@
-package com.a.randomsquare.first
+package com.a.randomsquare.color
 
 import androidx.lifecycle.ViewModel
 import com.a.randomsquare.util.ViewModelKey
@@ -11,7 +11,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class FirstFragmentModule {
+abstract class ColorFragmentModule {
 
     @Binds
     abstract fun provideFirstColorsGenerator(generator: SecondColorsGeneratorImpl): IColorsGenerator
@@ -21,6 +21,6 @@ abstract class FirstFragmentModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(FirstViewModel::class)
-    internal abstract fun firstViewModel(viewModel: FirstViewModel): ViewModel
+    @ViewModelKey(ColorViewModel::class)
+    internal abstract fun firstViewModel(viewModel: ColorViewModel): ViewModel
 }

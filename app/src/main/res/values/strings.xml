@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">RandomSquare</string>
     <string name="generate">Generate</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="color">Color</string>
+    <string name="color_name">Color Name</string>
+    <string name="my_name">My Name</string>
+    <string name="generate_color">Generate color</string>
 </resources>

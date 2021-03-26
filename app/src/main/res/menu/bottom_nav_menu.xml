@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_first"
+        android:id="@+id/navigation_color"
         android:icon="@drawable/ic_icon1"
-        android:title="First" />
+        android:title="@string/color" />
 
     <item
-        android:id="@+id/navigation_second"
+        android:id="@+id/navigation_color_name"
         android:icon="@drawable/ic_icon2"
-        android:title="Second" />
+        android:title="@string/color_name" />
 
     <item
-        android:id="@+id/navigation_third"
+        android:id="@+id/navigation_my_name"
         android:icon="@drawable/ic_icon3"
-        android:title="Third" />
+        android:title="@string/my_name" />
 
 </menu>

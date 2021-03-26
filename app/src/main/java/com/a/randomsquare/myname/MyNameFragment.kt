@@ -1,5 +1,6 @@
-package com.a.randomsquare.second
+package com.a.randomsquare.myname
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,18 +10,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navGraphViewModels
 import com.a.randomsquare.R
-import com.a.randomsquare.databinding.FragmentSecondBinding
+import com.a.randomsquare.databinding.FragmentMyNameBinding
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class SecondFragment : Fragment() {
+@SuppressLint("CheckResult")
+class MyNameFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: SecondViewModel by navGraphViewModels(
+    private val viewModel: MyNameViewModel by navGraphViewModels(
         R.id.mobile_navigation
     ) { viewModelFactory }
-    private var _binding: FragmentSecondBinding? = null
+    private var _binding: FragmentMyNameBinding? = null
     private val binding get() = _binding!!
     private lateinit var rootView: View
 
@@ -29,28 +31,18 @@ class SecondFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         init()
-        binding.generateSecondButton.setOnClickListener {
-            viewModel.generateRandomColor()
-        }
-        viewModel.colorCodeLiveData.observe(viewLifecycleOwner, {
-            binding.secondTextView.text = viewModel.colorCodeLiveData.value!!
-        })
-
+        viewModel.observable.subscribe { binding.nameTextView.text = it }
         return rootView
     }
 
     private fun init() {
-        _binding = FragmentSecondBinding.inflate(layoutInflater)
+        _binding = FragmentMyNameBinding.inflate(layoutInflater)
         rootView = binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
+
 }

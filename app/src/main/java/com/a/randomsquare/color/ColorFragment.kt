@@ -1,4 +1,4 @@
-package com.a.randomsquare.first
+package com.a.randomsquare.color
 
 import android.content.Context
 import android.os.Bundle
@@ -10,18 +10,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navGraphViewModels
 import com.a.randomsquare.R
-import com.a.randomsquare.databinding.FragmentFirstBinding
+import com.a.randomsquare.databinding.FragmentColorBinding
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
-class FirstFragment : Fragment() {
+class ColorFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-    private val viewModel: FirstViewModel by navGraphViewModels(
+    private val viewModel: ColorViewModel by navGraphViewModels(
         R.id.mobile_navigation
     ) { viewModelFactory }
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentColorBinding? = null
     private val binding get() = _binding!!
     private lateinit var rootView: View
 
@@ -52,7 +52,7 @@ class FirstFragment : Fragment() {
     }
 
     private fun init() {
-        _binding = FragmentFirstBinding.inflate(layoutInflater)
+        _binding = FragmentColorBinding.inflate(layoutInflater)
         rootView = binding.root
         binding.root.setBackgroundColor(viewModel.customSquareColor.code)
         binding.customSquare.color = viewModel.backgroundColorCode

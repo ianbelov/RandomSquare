@@ -1,4 +1,4 @@
-package com.a.randomsquare.second
+package com.a.randomsquare.colorname
 
 import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 @SuppressLint("CheckResult")
-class SecondViewModel @Inject constructor(
+class ColorNameViewModel @Inject constructor(
     private var generator: IColorNameGenerator,
 ) : ViewModel() {
 
