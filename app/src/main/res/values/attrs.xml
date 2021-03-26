@@ -7,7 +7,7 @@
 
     <declare-styleable name="MyTheme">
         <attr name="surface_color" format="reference"/>
-        <attr name="button_color" format="reference"/>
+        <attr name="button_background" format="reference"/>
         <attr name="text_color" format="reference"/>
         <attr name="button_text_color" format="reference"/>
     </declare-styleable>

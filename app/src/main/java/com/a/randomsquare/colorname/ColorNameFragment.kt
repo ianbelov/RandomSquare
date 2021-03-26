@@ -36,7 +36,7 @@ class ColorNameFragment : Fragment() {
         viewModel.colorCodeLiveData.observe(viewLifecycleOwner, {
             binding.secondTextView.text = viewModel.colorCodeLiveData.value!!
         })
-        binding.themeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.themeSwitch.setOnCheckedChangeListener { _, isChecked ->
             when (isChecked) {
                 true -> {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -52,6 +52,7 @@ class ColorNameFragment : Fragment() {
     private fun init() {
         _binding = FragmentColorNameBinding.inflate(layoutInflater)
         rootView = binding.root
+        binding.themeSwitch.isChecked = AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES
     }
 
     override fun onDestroyView() {
