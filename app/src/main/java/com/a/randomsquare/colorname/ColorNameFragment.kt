@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navGraphViewModels
@@ -35,7 +36,16 @@ class ColorNameFragment : Fragment() {
         viewModel.colorCodeLiveData.observe(viewLifecycleOwner, {
             binding.secondTextView.text = viewModel.colorCodeLiveData.value!!
         })
-
+        binding.themeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            when (isChecked) {
+                true -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+                false -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                }
+            }
+        }
         return rootView
     }
 
